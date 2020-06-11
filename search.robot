@@ -11,6 +11,7 @@ Cenario: Buscar por Robot Framework no Google e entrar na pagina
     [Tags]  busca
     Digite "Robot Framework" no campo de busca
     Verifique se a busca retornou o resultado esperado
+    Clique no segundo link
     Verifique se a pagina mostrada e a correta
 
 *** Keywords ***
@@ -21,13 +22,13 @@ Digite "${palavra busca}" no campo de busca
 
     Set Test Variable  ${palavra busca}
     Input text      q  ${palavra busca}
-    Submit  
+    Click Element   xpath=//div[@class='FPdoLc tfB0Bf']//*[@name='btnK']
 
 Verifique se a busca retornou o resultado esperado
     ${titulo} =  Get title
     Should Contain  ${titulo}  ${palavra busca}
 
-Clique no primeiro link
+Clique no segundo link
     ${texto} =  Get text  css = #rso > div:nth-child(1) > div > div > div > div > h3
     Click link  ${texto}
 
