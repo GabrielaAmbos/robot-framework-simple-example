@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation   Pesquisar Robot Framework no Google
+Documentation  Pesquisar Robot Framework no Google
           ...  Projeto simples de apresentação da ferramenta
           ...  com uma busca simples no Google
 
@@ -9,19 +9,19 @@ Library  SeleniumLibrary
 Cenario: Buscar por Robot Framework no Google e entrar na pagina
 
     [Tags]  busca
-    Pesquisar por "Robot Framework" 
+    Digite "Robot Framework" no campo de busca
     Verifique se a busca retornou o resultado esperado
     Verifique se a pagina mostrada e a correta
 
 *** Keywords ***
-    Open Browser    Chrome      http://www.google.com.br
+    Open Browser     http://www.google.com.br       Chrome
 
 Digite "${palavra busca}" no campo de busca
-    Open Browser    Chrome      http://www.google.com.br
+    Open Browser     http://www.google.com.br       Chrome
 
     Set Test Variable  ${palavra busca}
-    Input text      id = lst-ib  ${palavra busca}
-    Click Button    Pesquisa Google
+    Input text      q  ${palavra busca}
+    Submit  
 
 Verifique se a busca retornou o resultado esperado
     ${titulo} =  Get title
